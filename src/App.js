@@ -187,8 +187,8 @@ function App() {
 
         <ConnectKitButton />
         {/* <ReadContract /> */}
-        {/* <UseToken /> */}
-        <WriteContract />
+        <UseToken />
+        {/* <WriteContract /> */}
       </ConnectKitProvider>
 
       {/* <SendTransaction /> */}
