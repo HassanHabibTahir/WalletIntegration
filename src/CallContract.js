@@ -1,5 +1,6 @@
 import React from "react";
 import { useContract } from "wagmi";
+
 const CallContract = () => {
   const RegistryAbi = [
     {
@@ -701,6 +702,7 @@ const CallContract = () => {
     addressOrName: "0x61e15eC83e462266F8842336b2ebB1c831A5a703",
     contractInterface: RegistryAbi,
   });
+  console.log(contract, "contractdata");
   return <div>CallContract</div>;
 };
 

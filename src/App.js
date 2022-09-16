@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import Profile from "./Profile";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-
+import ReadContract from "./ReadContract";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import CallContract from "./CallContract";
@@ -12,6 +12,8 @@ import {
   ConnectKitButton,
   getDefaultClient,
 } from "connectkit";
+import UseToken from "./UseToken";
+import WriteContract from "./WriteContract";
 // import {
 //   WagmiConfig,
 //   createClient,
@@ -99,37 +101,41 @@ function App() {
     testnet: false,
   };
 
-  const bnbSmartChainText = {
+  const bsc_testnet = {
     id: 97,
-    name: "BNB Smart Chain textnet",
-    network: "BNB Smart Chain Mainnet",
+    name: "Binance Smart Chain",
+    network: "bsc",
     nativeCurrency: {
       decimals: 18,
-      name: "BNB",
-      symbol: "tBNB",
+      name: "Binance",
+      symbol: "BNB",
     },
     rpcUrls: {
-      default: "ttps://data-seed-hprebsc-1-s1.binance.org:",
+      default: "https://data-seed-prebsc-1-s1.binance.org:8545/",
     },
     blockExplorers: {
-      default: { name: "BnbTrace", url: "https://testnet.bscscan.com/" },
+      default: { name: "SnowTrace", url: "https://testnet.bscscan.com/" },
     },
-    testnet: false,
+    testnet: true,
   };
-
   const { chains, provider } = configureChains(
-    [bnbSmartChain, bnbSmartChainText],
+    [bsc_testnet],
     [
       jsonRpcProvider({
-        rpc: (chain) => ({
-          http:
-            chain.id === 56
-              ? `https://bsc-dataseed1.binance.org/`
-              : "https://data-seed-prebsc-1-s1.binance.org:8545/",
-        }),
+        rpc: (chain) => {
+          if (chain.id !== bsc_testnet.id) return null;
+          return { http: chain.rpcUrls.default };
+        },
       }),
     ]
   );
+
+  // rpc: (chain) => ({
+  //   http:
+  //     chain.id === 97
+  //       ? `  https://data-seed-prebsc-1-s1.binance.org:8545/`
+  //       : "https://bsc-dataseed1.binance.org/",
+  // }),
 
   // const client = createClient(
   //   getDefaultClient({
@@ -177,7 +183,12 @@ function App() {
     <WagmiConfig client={client}>
       <ConnectKitProvider theme="default" mode="dark">
         <Profile />
+        {/* <CallContract /> */}
+
         <ConnectKitButton />
+        {/* <ReadContract /> */}
+        {/* <UseToken /> */}
+        <WriteContract />
       </ConnectKitProvider>
 
       {/* <SendTransaction /> */}
