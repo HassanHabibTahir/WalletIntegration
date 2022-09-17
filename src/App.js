@@ -34,6 +34,8 @@ import { getDefaultProvider } from "ethers";
 import { infuraProvider } from "wagmi/providers/infura";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import UseSigner from "./UseSigner";
+import SignMeassage from "./SignMeassage";
 // import { SendTransaction } from "./SendTransaction";
 // import { alchemyProvider } from "wagmi/providers/alchemy";
 // import { publicProvider } from "wagmi/providers/public";
@@ -187,8 +189,10 @@ function App() {
 
         <ConnectKitButton />
         {/* <ReadContract /> */}
-        <UseToken />
         {/* <WriteContract /> */}
+        {/* <UseToken /> */}
+        {/* <UseSigner /> */}
+        <SignMeassage />
       </ConnectKitProvider>
 
       {/* <SendTransaction /> */}
