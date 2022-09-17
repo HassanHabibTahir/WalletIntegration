@@ -14,6 +14,7 @@ import {
 } from "connectkit";
 import UseToken from "./UseToken";
 import WriteContract from "./WriteContract";
+import UseFeeData from "./usefeedata";
 // import {
 //   WagmiConfig,
 //   createClient,
@@ -193,6 +194,7 @@ function App() {
         {/* <UseToken /> */}
         {/* <UseSigner /> */}
         <SignMeassage />
+        {/* <UseFeeData /> */}
       </ConnectKitProvider>
 
       {/* <SendTransaction /> */}
