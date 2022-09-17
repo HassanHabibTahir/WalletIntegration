@@ -20,11 +20,14 @@ const SignMeassage = () => {
       }}
     >
       <label htmlFor="message">Enter a message to sign</label>
+      <br></br>
       <textarea
         id="message"
         name="message"
         placeholder="The quick brown fox…"
+        style={{ margin: "1rem 0rem" }}
       />
+      <br />
       <button disabled={isLoading}>
         {isLoading ? "Check Wallet" : "Sign Message"}
       </button>
